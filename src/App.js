@@ -16,6 +16,9 @@ function App() {
     console.log("initJeeliz");
     JEELIZFACEFILTER.init({
       canvas: jeelizRef.current,
+      scanSettings: {
+        //enableAsyncReadPixels: false
+      },
       NNC: NN_DEFAULT, // root of NN_DEFAULT.json file
       callbackReady: function (errCode, spec) {
         if (errCode) {
@@ -96,7 +99,7 @@ function App() {
             CVD.update_projMatrix();
           }
           CVD.GL.bindTexture(CVD.GL.TEXTURE_2D, CVD.CANVASTEXTURE);
-          if (CVD.CANVASTEXTURENEEDSUPDATE) {
+          if (CVD.CANVASTEXTURENEEDSUPDATE || true) {
             CVD.GL.texImage2D(
               CVD.GL.TEXTURE_2D,
               0,
@@ -107,6 +110,8 @@ function App() {
             );
             CVD.CANVASTEXTURENEEDSUPDATE = false;
           }
+
+        //  debugger;
           CVD.GL.bindBuffer(CVD.GL.ARRAY_BUFFER, CVD.VBO_VERTEX);
           CVD.GL.vertexAttribPointer(CVD.SHADERCANVAS.position, 3, CVD.GL.FLOAT, false, 20, 0);
           CVD.GL.vertexAttribPointer(CVD.SHADERCANVAS.uv, 2, CVD.GL.FLOAT, false, 20, 12);
