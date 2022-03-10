@@ -66,7 +66,7 @@ const JeelizCanvas2DHelper = function (spec) {
 
   // set the position part of a flattened transposed mat4:
   function set_mat4Position(m, x, y, z) {
-    console.log('set_mat4Position');
+    //console.log('set_mat4Position');
     m[12] = x;
     m[13] = y;
     m[14] = z;
@@ -74,7 +74,7 @@ const JeelizCanvas2DHelper = function (spec) {
 
   // set the rotation part of a flattened transposed mat4 - see https://en.wikipedia.org/wiki/Euler_angles
   function set_mat4RotationXYZ(m, rx, ry, rz) {
-    console.log('set_mat4RotationXYZ');
+    //console.log('set_mat4RotationXYZ');
     const c1 = Math.cos(rx),
       s1 = Math.sin(rx),
       c2 = Math.cos(ry),
@@ -171,7 +171,7 @@ const JeelizCanvas2DHelper = function (spec) {
 
   // helper function to create the projection matrix:
   function update_projMatrix() {
-    console.log('update_projMatrix');
+    //console.log('update_projMatrix');
     const tan = Math.tan((0.5 * SETTINGS.cameraFOV * Math.PI) / 180),
       zMax = 100,
       zMin = 0.1,
@@ -352,6 +352,8 @@ const JeelizCanvas2DHelper = function (spec) {
     VIDEOTRANSFORMMAT2,
     MOVMATRIX,
     MOVMATRIXINV,
+
+    SETTINGS,
 
     ZPLANE,
     YPLANE,
