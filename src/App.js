@@ -6,6 +6,7 @@ import { JEELIZFACEFILTER, NN_DEFAULT } from "facefilter";
 
 function App() {
   const jeelizRef = useRef(null);
+  const videoRef = useRef(null);
 
   useEffect(() => {
     if (jeelizRef.current) initJeeliz();
@@ -122,13 +123,15 @@ function App() {
           CVD.GL.disable(CVD.GL.BLEND);
         }
       },
-      // isKeepRunningOnWinFocusLost: true,
+      isKeepRunningOnWinFocusLost: true,
     });
+    videoRef.current.srcObject = jeelizRef.current.captureStream(30);
   };
 
   return (
     <div className="App">
       <canvas id="jeelizCanvas" ref={jeelizRef} hidden={false} height={750} width={750}/>
+      <video id="jeelizVideo" ref={videoRef} hidden={false} height={450} width={450} autoPlay muted/>
     </div>
   );
 }
